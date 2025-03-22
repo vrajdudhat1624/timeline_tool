@@ -7,3 +7,17 @@ import { AppShell } from "@/components/layout/app-shell";
 
 
 const inter = Inter({ subsets: ["latin"] });
+
+export const metadata: Metadata = {
+  title: "ChronoScope - Advanced Project Management",
+  description: "Next-generation project timeline visualization and management tool",
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+     return (
+        <html lang="en" suppressHydrationWarning>
+          <body className={inter.className}>
