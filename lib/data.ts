@@ -7,6 +7,7 @@ export const projectsData = [
     endDate: "2023-03-20",
     status: "completed",
     description: "Comprehensive market analysis for new product launch",
+    consultants: ["Alex Morgan", "Sarah Chen"],
   },
   {
     id: 2,
@@ -16,6 +17,7 @@ export const projectsData = [
     endDate: "2023-06-30",
     status: "active",
     description: "Enterprise-wide digital transformation initiative",
+    consultants: ["James Wilson", "Maria Rodriguez", "David Kim"],
   },
   {
     id: 3,
@@ -25,5 +27,6 @@ export const projectsData = [
     endDate: "2023-07-15",
     status: "active",
     description: "End-to-end supply chain efficiency improvement",
+    consultants: ["Robert Chen", "Emma Davis"],
   },
 ]
