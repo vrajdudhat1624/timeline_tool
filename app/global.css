@@ -114,3 +114,12 @@
     --violet-900: 250 100% 25%;
   }
 }
+
+@layer base {
+  * {
+    @apply border-border; /* Apply border color globally */
+  }
+  body {
+    @apply bg-background text-foreground; /* Set background and text color */
+  }
+}
