@@ -86,3 +86,14 @@ import { cn } from "@/lib/utils"
     ))}
   </nav>
 </SheetContent>
+
+import { Clock } from "lucide-react"
+
+<SheetContent side="left" className="pr-0">
+  <div className="px-7">
+    <Link href="/" className="flex items-center space-x-2" onClick={() => setOpen(false)}>
+      <Clock className="h-6 w-6 text-primary" />
+      <span className="font-bold">ChronoScope</span>
+    </Link>
+  </div>
+</SheetContent>
