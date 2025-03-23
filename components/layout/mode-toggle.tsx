@@ -54,3 +54,29 @@ export function ModeToggle() {
     <span>System</span>
   </DropdownMenuItem>
 </DropdownMenuContent>
+
+import { motion } from "framer-motion"
+
+{theme === "light" && (
+  <motion.div
+    layoutId="theme-indicator"
+    className="ml-auto h-1 w-1 rounded-full bg-primary"
+    transition={{ type: "spring", stiffness: 300, damping: 30 }}
+  />
+)}
+
+{theme === "dark" && (
+  <motion.div
+    layoutId="theme-indicator"
+    className="ml-auto h-1 w-1 rounded-full bg-primary"
+    transition={{ type: "spring", stiffness: 300, damping: 30 }}
+  />
+)}
+
+{theme === "system" && (
+  <motion.div
+    layoutId="theme-indicator"
+    className="ml-auto h-1 w-1 rounded-full bg-primary"
+    transition={{ type: "spring", stiffness: 300, damping: 30 }}
+  />
+)}
