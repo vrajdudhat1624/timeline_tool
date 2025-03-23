@@ -48,3 +48,32 @@ export function MainNav() {
     </div>
   )
 }
+
+import { cn } from "@/lib/utils"
+
+export function MainNav() {
+  const pathname = usePathname()
+
+  return (
+    <div className="mr-4 hidden md:flex">
+      <Link href="/" className="mr-6 flex items-center space-x-2">
+        <span className="hidden font-bold sm:inline-block">ChronoScope</span>
+      </Link>
+      <nav className="flex items-center space-x-6 text-sm font-medium">
+        {navItems.map((item) => (
+          <Link
+            key={item.href}
+            href={item.href}
+            className={cn(
+              "flex items-center transition-colors hover:text-foreground/80 px-2 py-1.5 rounded-md",
+              pathname === item.href ? "text-foreground bg-muted" : "text-foreground/60"
+            )}
+          >
+            <item.icon className="h-4 w-4 mr-2" />
+            {item.name}
+          </Link>
+        ))}
+      </nav>
+    </div>
+  )
+}
