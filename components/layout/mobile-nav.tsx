@@ -35,3 +35,34 @@ export function MobileNav() {
     </div>
   )
 }
+
+import Link from "next/link"
+import { Home, LayoutPanelLeft, Users, BarChart, Settings } from "lucide-react"
+
+const navItems = [
+  {
+    name: "Home",
+    href: "/",
+    icon: Home,
+  },
+  {
+    name: "Projects",
+    href: "/projects",
+    icon: LayoutPanelLeft,
+  },
+  {
+    name: "Employees",
+    href: "/employees",
+    icon: Users,
+  },
+  {
+    name: "Analytics",
+    href: "/analytics",
+    icon: BarChart,
+  },
+  {
+    name: "Settings",
+    href: "/settings",
+    icon: Settings,
+  },
+]
