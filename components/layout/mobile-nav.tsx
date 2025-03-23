@@ -66,3 +66,23 @@ const navItems = [
     icon: Settings,
   },
 ]
+import { cn } from "@/lib/utils"
+
+<SheetContent side="left" className="pr-0">
+  <nav className="mt-8 flex flex-col gap-3 px-2">
+    {navItems.map((item) => (
+      <Link
+        key={item.href}
+        href={item.href}
+        onClick={() => setOpen(false)}
+        className={cn(
+          "flex items-center gap-3 rounded-lg px-3 py-2 text-base transition-all hover:text-foreground",
+          pathname === item.href ? "bg-muted font-medium text-foreground" : "text-muted-foreground",
+        )}
+      >
+        <item.icon className="h-5 w-5" />
+        {item.name}
+      </Link>
+    ))}
+  </nav>
+</SheetContent>
