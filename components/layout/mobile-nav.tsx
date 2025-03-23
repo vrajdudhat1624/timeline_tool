@@ -97,3 +97,8 @@ import { Clock } from "lucide-react"
     </Link>
   </div>
 </SheetContent>
+
+<Link href="/" className="flex items-center space-x-2">
+  <Clock className="h-6 w-6 text-primary" />
+  <span className="font-bold">ChronoScope</span>
+</Link>
