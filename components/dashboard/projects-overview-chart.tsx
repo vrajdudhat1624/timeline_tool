@@ -49,3 +49,25 @@ import { CartesianGrid, Tooltip } from "recharts"
   itemStyle={{ color: "var(--foreground)" }}
   labelStyle={{ color: "var(--foreground)", fontWeight: "bold", marginBottom: "4px" }}
 />
+
+import { Legend } from "recharts"
+
+<Legend
+  wrapperStyle={{ paddingTop: "16px" }}
+  formatter={(value) => <span className="text-sm capitalize">{value}</span>}
+/>
+
+<Bar dataKey="completed" name="Completed" stackId="a" fill="var(--green-500)" />
+<Bar dataKey="active" name="Active" stackId="a" fill="var(--blue-500)" />
+<Bar dataKey="planned" name="Planned" stackId="a" fill="var(--amber-500)" />
+
+import { Legend } from "recharts"
+
+<Legend
+  wrapperStyle={{ paddingTop: "16px" }}
+  formatter={(value) => <span className="text-sm capitalize">{value}</span>}
+/>
+
+<Bar dataKey="completed" name="Completed" stackId="a" fill="var(--green-500)" />
+<Bar dataKey="active" name="Active" stackId="a" fill="var(--blue-500)" />
+<Bar dataKey="planned" name="Planned" stackId="a" fill="var(--amber-500)" />
