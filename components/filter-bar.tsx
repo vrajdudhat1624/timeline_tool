@@ -36,3 +36,13 @@ import { cn } from "@/lib/utils"
   <filter.icon className="w-4 h-4 mr-2" />
   {filter.label}
 </Button>
+
+import { motion } from "framer-motion"
+
+{activeFilter === filter.id && (
+  <motion.div
+    layoutId="activeFilterIndicator"
+    className="absolute bottom-0 left-0 right-0 h-0.5 bg-white rounded-full"
+    transition={{ type: "spring", duration: 0.5 }}
+  />
+)}
