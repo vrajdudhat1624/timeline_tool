@@ -28,3 +28,9 @@ export function ProjectsOverviewChart() {
     </ResponsiveContainer>
   )
 }
+<XAxis dataKey="name" className="text-xs fill-muted-foreground" tickLine={false} axisLine={false} />
+<YAxis className="text-xs fill-muted-foreground" tickLine={false} axisLine={false} />
+
+<Bar dataKey="completed" fill="var(--green-500)" radius={[4, 4, 0, 0]} />
+<Bar dataKey="active" fill="var(--blue-500)" radius={[4, 4, 0, 0]} />
+<Bar dataKey="planned" fill="var(--amber-500)" radius={[4, 4, 0, 0]} />
