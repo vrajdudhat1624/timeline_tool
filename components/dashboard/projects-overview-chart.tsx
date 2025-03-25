@@ -34,3 +34,18 @@ export function ProjectsOverviewChart() {
 <Bar dataKey="completed" fill="var(--green-500)" radius={[4, 4, 0, 0]} />
 <Bar dataKey="active" fill="var(--blue-500)" radius={[4, 4, 0, 0]} />
 <Bar dataKey="planned" fill="var(--amber-500)" radius={[4, 4, 0, 0]} />
+
+import { CartesianGrid, Tooltip } from "recharts"
+
+<CartesianGrid strokeDasharray="3 3" className="stroke-muted" />
+
+<Tooltip
+  contentStyle={{
+    backgroundColor: "var(--background)",
+    borderColor: "var(--border)",
+    borderRadius: "8px",
+    boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+  }}
+  itemStyle={{ color: "var(--foreground)" }}
+  labelStyle={{ color: "var(--foreground)", fontWeight: "bold", marginBottom: "4px" }}
+/>
