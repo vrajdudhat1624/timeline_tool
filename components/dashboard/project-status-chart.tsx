@@ -48,3 +48,17 @@ export function ProjectStatusChart() {
   animationDuration={1000}
   animationBegin={200}
 />
+
+import { Tooltip } from "recharts"
+
+<Tooltip
+  contentStyle={{
+    backgroundColor: "var(--background)",
+    borderColor: "var(--border)",
+    borderRadius: "8px",
+    boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+  }}
+  itemStyle={{ color: "var(--foreground)" }}
+  formatter={(value) => [`${value} Projects`, null]}
+  labelFormatter={(label) => data.find((item) => item.value === label)?.name || ""}
+/>
