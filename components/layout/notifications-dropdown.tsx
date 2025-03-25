@@ -54,3 +54,29 @@ export function NotificationsDropdown() {
   const markAllAsRead = () => {
     setUnreadCount(0)
   }
+
+  return (
+    <DropdownMenu open={open} onOpenChange={setOpen}>
+      <DropdownMenuTrigger asChild>
+        <Button variant="ghost" size="icon" className="relative">
+          <Bell className="h-[1.2rem] w-[1.2rem]" />
+          <AnimatePresence>
+            {unreadCount > 0 && (
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                exit={{ scale: 0 }}
+                className="absolute -top-1 -right-1"
+              >
+                <Badge
+                  variant="destructive"
+                  className="h-5 w-5 rounded-full p-0 flex items-center justify-center text-[10px]"
+                >
+                  {unreadCount}
+                </Badge>
+              </motion.div>
+            )}
+          </AnimatePresence>
+          <span className="sr-only">Notifications</span>
+        </Button>
+      </DropdownMenuTrigger>
