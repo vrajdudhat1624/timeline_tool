@@ -46,3 +46,11 @@ const notifications = [
     unread: false,
   },
 ]
+
+export function NotificationsDropdown() {
+  const [open, setOpen] = React.useState(false)
+  const [unreadCount, setUnreadCount] = React.useState(notifications.filter((n) => n.unread).length)
+
+  const markAllAsRead = () => {
+    setUnreadCount(0)
+  }
