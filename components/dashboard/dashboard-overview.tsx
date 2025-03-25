@@ -65,3 +65,52 @@ export function DashboardOverview() {
     </div>
   )
 }
+
+import { ProjectsOverviewChart } from "@/components/dashboard/projects-overview-chart"
+import { ProjectStatusChart } from "@/components/dashboard/project-status-chart"
+import { WorkloadChart } from "@/components/dashboard/workload-chart"
+
+export function DashboardOverview() {
+  return (
+    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
+      <motion.div className="col-span-4" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.2 }}>
+        <Card className="h-full">
+          <CardHeader>
+            <CardTitle>Projects Overview</CardTitle>
+            <CardDescription>Project completion and timeline status</CardDescription>
+          </CardHeader>
+          <CardContent className="pl-2">
+            <ProjectsOverviewChart />
+          </CardContent>
+        </Card>
+      </motion.div>
+
+      <motion.div className="col-span-3" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.3 }}>
+        <Card className="h-full">
+          <CardHeader>
+            <CardTitle>Project Status</CardTitle>
+            <CardDescription>Distribution by current status</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <ProjectStatusChart />
+          </CardContent>
+        </Card>
+      </motion.div>
+    </div>
+
+    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
+      <motion.div className="col-span-3" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.4 }}>
+        <Card className="h-full">
+          <CardHeader>
+            <CardTitle>Team Workload</CardTitle>
+            <CardDescription>Resource allocation across departments</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <WorkloadChart />
+          </CardContent>
+        </Card>
+      </motion.div>
+    </div>
+  )
+}
+
