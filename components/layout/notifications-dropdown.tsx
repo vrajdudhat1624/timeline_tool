@@ -80,3 +80,19 @@ export function NotificationsDropdown() {
           <span className="sr-only">Notifications</span>
         </Button>
       </DropdownMenuTrigger>
+
+      <DropdownMenuContent className="w-80" align="end">
+        <DropdownMenuLabel className="flex items-center justify-between">
+          <span>Notifications</span>
+          {unreadCount > 0 && (
+            <Button
+              variant="ghost"
+              size="sm"
+              className="h-auto p-0 text-xs font-normal text-primary"
+              onClick={markAllAsRead}
+            >
+              Mark all as read
+            </Button>
+          )}
+        </DropdownMenuLabel>
+        <DropdownMenuSeparator />
