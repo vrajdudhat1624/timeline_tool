@@ -62,3 +62,22 @@ import { Tooltip } from "recharts"
   formatter={(value) => [`${value} Projects`, null]}
   labelFormatter={(label) => data.find((item) => item.value === label)?.name || ""}
 />
+
+import { motion } from "framer-motion"
+
+<div className="flex flex-wrap justify-center gap-3 mt-4">
+  {data.map((entry, index) => (
+    <motion.div
+      key={`legend-${index}`}
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: index * 0.1 }}
+      className="flex items-center"
+    >
+      <div className="w-3 h-3 rounded-full mr-2" style={{ backgroundColor: entry.color }} />
+      <span className="text-sm text-muted-foreground">
+        {entry.name} ({entry.value})
+      </span>
+    </motion.div>
+  ))}
+</div>
