@@ -31,3 +31,37 @@ export function DashboardOverview() {
     </div>
   )
 }
+
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { BarChart3, Clock, Users, AlertCircle } from "lucide-react"
+
+const stats = [
+  { title: "Total Projects", value: 24, change: "+2 from last month", icon: BarChart3, progress: 65, color: "bg-primary" },
+  { title: "Active Projects", value: 12, change: "+8.2%", icon: Clock, progress: 50, color: "bg-blue-500" },
+  { title: "Team Members", value: 36, change: "+12.5%", icon: Users, progress: 75, color: "bg-green-500" },
+  { title: "At Risk Projects", value: 3, change: "-2.5%", icon: AlertCircle, progress: 12.5, color: "bg-red-500" }
+]
+
+export function DashboardOverview() {
+  return (
+    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+      {stats.map(({ title, value, change, icon: Icon, progress, color }, index) => (
+        <motion.div key={title} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: index * 0.1 }}>
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium">{title}</CardTitle>
+              <Icon className="h-4 w-4 text-muted-foreground" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold">{value}</div>
+              <p className="text-xs text-muted-foreground">{change}</p>
+              <div className="mt-4 h-1 w-full rounded-full bg-muted">
+                <div className={`h-1 rounded-full ${color}`} style={{ width: `${progress}%` }} />
+              </div>
+            </CardContent>
+          </Card>
+        </motion.div>
+      ))}
+    </div>
+  )
+}
