@@ -57,3 +57,24 @@ export function AiInsightsPanel() {
 
   return <div></div>
 }
+
+  return (
+    <div className="space-y-4">
+      <div className="flex space-x-2 overflow-x-auto pb-2 scrollbar-hide">
+        {insights.map((insight) => (
+          <motion.button
+            key={insight.id}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className={`px-3 py-1.5 text-sm rounded-md whitespace-nowrap flex items-center ${
+              activeInsight.id === insight.id
+                ? "bg-primary text-primary-foreground"
+                : "bg-muted text-muted-foreground hover:text-foreground"
+            }`}
+            onClick={() => setActiveInsight(insight)}
+          >
+            <insight.icon className="w-4 h-4 mr-2" />
+            {insight.type.charAt(0).toUpperCase() + insight.type.slice(1)}
+          </motion.button>
+        ))}
+      </div>
