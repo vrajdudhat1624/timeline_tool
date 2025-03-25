@@ -51,3 +51,9 @@ const insights = [
     bgColor: "bg-purple-50 dark:bg-purple-950/30",
   },
 ]
+
+export function AiInsightsPanel() {
+  const [activeInsight, setActiveInsight] = useState(insights[0])
+
+  return <div></div>
+}
