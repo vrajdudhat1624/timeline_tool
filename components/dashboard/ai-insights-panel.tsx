@@ -78,3 +78,29 @@ export function AiInsightsPanel() {
           </motion.button>
         ))}
       </div>
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={activeInsight.id}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.3 }}
+          className={`p-4 rounded-lg ${activeInsight.bgColor}`}
+        >
+          <div className="flex items-start">
+            <div className={`p-2 rounded-full ${activeInsight.bgColor} ${activeInsight.color} mr-4`}>
+              <activeInsight.icon className="w-6 h-6" />
+            </div>
+            <div className="flex-1">
+              <h3 className="font-medium text-lg mb-1">{activeInsight.title}</h3>
+              <p className="text-muted-foreground">{activeInsight.description}</p>
+              <Button variant="link" className={`${activeInsight.color} p-0 h-auto mt-2`} size="sm">
+                View details <ArrowRight className="ml-1 w-3 h-3" />
+              </Button>
+            </div>
+          </div>
+        </motion.div>
+      </AnimatePresence>
+    </div>
+  )
+}
