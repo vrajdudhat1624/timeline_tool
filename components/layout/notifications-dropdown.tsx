@@ -96,3 +96,23 @@ export function NotificationsDropdown() {
           )}
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
+
+        <DropdownMenuGroup className="max-h-[300px] overflow-auto">
+          {notifications.length > 0 ? (
+            notifications.map((notification) => (
+              <DropdownMenuItem key={notification.id} className="flex flex-col items-start p-4 cursor-pointer">
+                <div className="flex items-start justify-between w-full">
+                  <div className="font-medium flex items-center gap-2">
+                    {notification.title}
+                    {notification.unread && <span className="h-2 w-2 rounded-full bg-primary" />}
+                  </div>
+                  <span className="text-xs text-muted-foreground">{notification.time}</span>
+                </div>
+                <p className="text-sm text-muted-foreground mt-1">{notification.description}</p>
+              </DropdownMenuItem>
+            ))
+          ) : (
+            <div className="p-4 text-center text-muted-foreground">No notifications</div>
+          )}
+        </DropdownMenuGroup>
+        <DropdownMenuSeparator />
