@@ -116,3 +116,11 @@ export function NotificationsDropdown() {
           )}
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
+
+        <DropdownMenuItem className="justify-center text-primary cursor-pointer">
+          View all notifications
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  )
+}
