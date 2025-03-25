@@ -1,9 +1,5 @@
 "use client"
 
-export function AiInsightsPanel() {
-  return <div></div>
-}
-
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { TrendingUp, AlertTriangle, CheckCircle, Lightbulb, ArrowRight } from "lucide-react"
@@ -55,9 +51,6 @@ const insights = [
 export function AiInsightsPanel() {
   const [activeInsight, setActiveInsight] = useState(insights[0])
 
-  return <div></div>
-}
-
   return (
     <div className="space-y-4">
       <div className="flex space-x-2 overflow-x-auto pb-2 scrollbar-hide">
@@ -78,6 +71,7 @@ export function AiInsightsPanel() {
           </motion.button>
         ))}
       </div>
+
       <AnimatePresence mode="wait">
         <motion.div
           key={activeInsight.id}
