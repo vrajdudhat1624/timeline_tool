@@ -1,13 +1,6 @@
 "use client"
 
 import * as React from "react"
-
-export function NotificationsDropdown() {
-  const [open, setOpen] = React.useState(false)
-
-  return <div></div>
-}
-
 import { Bell } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 
@@ -80,7 +73,6 @@ export function NotificationsDropdown() {
           <span className="sr-only">Notifications</span>
         </Button>
       </DropdownMenuTrigger>
-
       <DropdownMenuContent className="w-80" align="end">
         <DropdownMenuLabel className="flex items-center justify-between">
           <span>Notifications</span>
@@ -96,7 +88,6 @@ export function NotificationsDropdown() {
           )}
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
-
         <DropdownMenuGroup className="max-h-[300px] overflow-auto">
           {notifications.length > 0 ? (
             notifications.map((notification) => (
@@ -116,7 +107,6 @@ export function NotificationsDropdown() {
           )}
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-
         <DropdownMenuItem className="justify-center text-primary cursor-pointer">
           View all notifications
         </DropdownMenuItem>
