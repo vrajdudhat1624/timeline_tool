@@ -24,3 +24,24 @@ const recentProjects = [
 export function RecentProjects() {
   return <div className="space-y-4"></div>
 }
+
+import { motion } from "framer-motion"
+
+export function RecentProjects() {
+  return (
+    <div className="space-y-4">
+      {recentProjects.map((project, index) => (
+        <motion.div
+          key={project.id}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.3, delay: index * 0.1 }}
+          className="p-4 rounded-lg border bg-card hover:bg-accent/50 transition-colors"
+        >
+          <h3 className="font-medium">{project.title}</h3>
+          <p className="text-sm text-muted-foreground">{project.client}</p>
+        </motion.div>
+      ))}
+    </div>
+  )
+}
