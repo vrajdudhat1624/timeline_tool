@@ -36,3 +36,15 @@ export function ProjectStatusChart() {
     </div>
   )
 }
+
+<Pie
+  data={data}
+  cx="50%"
+  cy="50%"
+  innerRadius={60}
+  outerRadius={80}
+  paddingAngle={2}
+  dataKey="value"
+  animationDuration={1000}
+  animationBegin={200}
+/>
