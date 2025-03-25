@@ -114,3 +114,37 @@ export function DashboardOverview() {
   )
 }
 
+import { AiInsightsPanel } from "@/components/dashboard/ai-insights-panel"
+import { RecentProjects } from "@/components/dashboard/recent-projects"
+import { TeamPerformance } from "@/components/dashboard/team-performance"
+
+export function DashboardOverview() {
+  return (
+    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
+      <motion.div className="col-span-4" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.5 }}>
+        <Card className="h-full">
+          <CardHeader>
+            <CardTitle>AI-Powered Insights</CardTitle>
+            <CardDescription>Predictive analytics and recommendations</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <AiInsightsPanel />
+          </CardContent>
+        </Card>
+      </motion.div>
+
+      <motion.div className="col-span-3">
+        <Card className="h-full">
+          <CardHeader>
+            <CardTitle>Team Performance</CardTitle>
+            <CardDescription>Productivity and efficiency metrics</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <TeamPerformance />
+          </CardContent>
+        </Card>
+      </motion.div>
+    </div>
+  )
+}
+
