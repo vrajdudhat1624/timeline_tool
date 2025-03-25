@@ -25,3 +25,14 @@ const filters = [
     {filter.label}
   </Button>
 ))}
+
+import { cn } from "@/lib/utils"
+
+<Button
+  variant={activeFilter === filter.id ? "default" : "outline"}
+  size="sm"
+  className={cn("relative", activeFilter === filter.id ? "" : "text-slate-600")}
+>
+  <filter.icon className="w-4 h-4 mr-2" />
+  {filter.label}
+</Button>
