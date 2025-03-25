@@ -12,3 +12,19 @@ const data = [
 export function ProjectsOverviewChart() {
   return <div className="h-[350px] w-full"></div>
 }
+
+import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer } from "recharts"
+
+export function ProjectsOverviewChart() {
+  return (
+    <ResponsiveContainer width="100%" height={350}>
+      <BarChart data={data}>
+        <XAxis dataKey="name" />
+        <YAxis />
+        <Bar dataKey="completed" fill="green" />
+        <Bar dataKey="active" fill="blue" />
+        <Bar dataKey="planned" fill="orange" />
+      </BarChart>
+    </ResponsiveContainer>
+  )
+}
