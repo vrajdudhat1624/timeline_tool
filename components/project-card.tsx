@@ -62,3 +62,63 @@ export function ProjectCard({ project, isExpanded, onToggle }: ProjectCardProps)
           stiffness: 500,
           damping: 30,
         }}
+    >
+          <motion.div className="p-5" layout="position">
+            <div className="flex justify-between items-start mb-3">
+              <div>
+                <motion.h3 className="font-semibold text-lg text-slate-800" layout="position">
+                  {project.title}
+                </motion.h3>
+                <motion.p className="text-slate-500 text-sm" layout="position">
+                  {project.client}
+                </motion.p>
+              </div>
+              <StatusBadge status={project.status} />
+            </div>
+
+            <motion.div className="flex items-center text-sm text-slate-500 mb-4" layout="position">
+              <Calendar className="w-4 h-4 mr-1" />
+              <span>
+                {startDate} - {endDate}
+              </span>
+            </motion.div>
+
+            <motion.p className="text-slate-600 mb-4" layout="position">
+              {project.description}
+            </motion.p>
+
+            <motion.div className="flex justify-between items-center mb-1" layout="position">
+              <span className="text-sm font-medium text-slate-700">Progress</span>
+              <span className="text-sm text-slate-500">
+                {completedMilestones} of {project.milestones.length}
+              </span>
+            </motion.div>
+
+            <motion.div layout="position" className="mb-4">
+              <Progress value={progress} className="h-2" />
+            </motion.div>
+
+            <motion.div layout="position">
+              <Button
+                variant="ghost"
+                size="sm"
+                className="w-full flex items-center justify-center text-slate-600 hover:text-slate-900 mt-2"
+                onClick={onToggle}
+              >
+                {isExpanded ? (
+                  <>
+                    <span>Show less</span>
+                    <ChevronUp className="ml-2 h-4 w-4" />
+                  </>
+                ) : (
+                  <>
+                    <span>Show details</span>
+                    <ChevronDown className="ml-2 h-4 w-4" />
+                  </>
+                )}
+              </Button>
+            </motion.div>
+          </motion.div>
+        </motion.div>
+      );
+    }
