@@ -22,3 +22,51 @@ const filters = [
 ]
 
 const activeFilterLabel = filters.find((f) => f.id === activeFilter)?.label || "All Projects"
+
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
+import { Button } from "@/components/ui/button"
+
+const [isOpen, setIsOpen] = useState(false)
+
+return (
+  <div className="sm:hidden w-full">
+    <DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline" className="w-full justify-between">
+          <div className="flex items-center">
+            <Filter className="w-4 h-4 mr-2" />
+            {activeFilterLabel}
+          </div>
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="w-full">
+        {filters.map((filter) => (
+          <DropdownMenuItem
+            key={filter.id}
+            onClick={() => {
+              onFilterChange(filter.id)
+              setIsOpen(false)
+            }}
+          >
+            <filter.icon className="w-4 h-4 mr-2" />
+            {filter.label}
+          </DropdownMenuItem>
+        ))}
+      </DropdownMenuContent>
+    </DropdownMenu>
+  </div>
+)
+
+<div className="hidden sm:flex flex-wrap gap-2">
+  {filters.map((filter) => (
+    <Button
+      key={filter.id}
+      variant={activeFilter === filter.id ? "default" : "outline"}
+      size="sm"
+      onClick={() => onFilterChange(filter.id)}
+    >
+      <filter.icon className="w-4 h-4 mr-2" />
+      {filter.label}
+    </Button>
+  ))}
+</div>
