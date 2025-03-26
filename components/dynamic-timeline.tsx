@@ -34,3 +34,21 @@ useEffect(() => {
 
   setVisibleProjects(filtered)
 }, [filter, searchTerm])
+
+import { useRef } from "react"
+import { motion, useScroll } from "framer-motion"
+
+const timelineRef = useRef<HTMLDivElement>(null)
+
+const { scrollYProgress } = useScroll({
+  target: timelineRef,
+  offset: ["start start", "end end"],
+})
+
+<motion.div
+  className="absolute top-0 w-full bg-primary rounded-full"
+  style={{
+    height: scrollYProgress,
+    scaleY: scrollYProgress,
+  }}
+/>
