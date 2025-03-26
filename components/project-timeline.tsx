@@ -30,3 +30,27 @@ const projectsData = [
     ],
   },
 ]
+export function ProjectTimeline() {
+  const [filter, setFilter] = useState<string>("all")
+
+  const filteredProjects = projectsData.filter((project) => {
+    if (filter === "all") return true
+    return project.status === filter
+  })
+
+  return (
+    <div className="space-y-8">
+      <FilterBar activeFilter={filter} onFilterChange={setFilter} />
+    </div>
+  )
+}
+return (
+  <div className="space-y-8">
+    <FilterBar activeFilter={filter} onFilterChange={setFilter} />
+
+    <div className="relative">
+      {/* Timeline center line */}
+      <div className="absolute left-[26px] top-0 bottom-0 w-[2px] bg-slate-200 md:left-1/2 md:transform md:-translate-x-px" />
+    </div>
+  </div>
+)
