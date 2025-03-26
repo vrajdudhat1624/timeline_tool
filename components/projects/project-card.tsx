@@ -87,3 +87,52 @@ export function ProjectCard({ project, isExpanded, onToggle }: ProjectCardProps)
     </motion.div>
   )
 }
+function StatusBadge({ status }: { status: string }) {
+  const variants = {
+    initial: { scale: 0.8, opacity: 0 },
+    animate: { scale: 1, opacity: 1 },
+    exit: { scale: 0.8, opacity: 0 },
+    hover: { scale: 1.05 },
+  }
+
+  switch (status) {
+    case "completed":
+      return (
+        <motion.div variants={variants} initial="initial" animate="animate" exit="exit" whileHover="hover">
+          <Badge className="bg-green-100 text-green-800 hover:bg-green-100 dark:bg-green-900/30 dark:text-green-400 dark:hover:bg-green-900/30">
+            <CheckCircle className="w-3 h-3 mr-1" />
+            Completed
+          </Badge>
+        </motion.div>
+      )
+    case "active":
+      return (
+        <motion.div variants={variants} initial="initial" animate="animate" exit="exit" whileHover="hover">
+          <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-100 dark:bg-blue-900/30 dark:text-blue-400 dark:hover:bg-blue-900/30">
+            <Clock className="w-3 h-3 mr-1" />
+            Active
+          </Badge>
+        </motion.div>
+      )
+    case "at-risk":
+      return (
+        <motion.div variants={variants} initial="initial" animate="animate" exit="exit" whileHover="hover">
+          <Badge className="bg-amber-100 text-amber-800 hover:bg-amber-100 dark:bg-amber-900/30 dark:text-amber-400 dark:hover:bg-amber-900/30">
+            <AlertCircle className="w-3 h-3 mr-1" />
+            At Risk
+          </Badge>
+        </motion.div>
+      )
+    case "planned":
+      return (
+        <motion.div variants={variants} initial="initial" animate="animate" exit="exit" whileHover="hover">
+          <Badge className="bg-muted text-muted-foreground hover:bg-muted">
+            <Clock className="w-3 h-3 mr-1" />
+            Planned
+          </Badge>
+        </motion.div>
+      )
+    default:
+      return null
+  }
+}
