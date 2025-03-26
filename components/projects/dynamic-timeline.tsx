@@ -28,3 +28,27 @@ const { scrollYProgress } = useScroll({
   target: timelineRef,
   offset: ["start start", "end end"],
 })
+
+// Filter and search projects
+useEffect(() => {
+  let filtered = projectsData
+
+  // Apply status filter
+  if (filter !== "all") {
+    filtered = filtered.filter((project) => project.status === filter)
+  }
+
+  // Apply search filter
+  if (searchTerm) {
+    const term = searchTerm.toLowerCase()
+    filtered = filtered.filter(
+      (project) =>
+        project.title.toLowerCase().includes(term) ||
+        project.client.toLowerCase().includes(term) ||
+        project.description.toLowerCase().includes(term),
+    )
+  }
+
+  // Animate the transition of filtered projects
+  setVisibleProjects(filtered)
+}, [filter, searchTerm])
