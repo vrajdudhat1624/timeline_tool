@@ -163,3 +163,29 @@ return (
                     {getStatusIcon(project.status)}
                   </motion.div>
                 </motion.div>
+                {/* Project card with alternating layout on desktop */}
+                <div
+                  className={cn(
+                    "ml-[70px] md:w-[calc(50%-40px)]",
+                    index % 2 === 0 ? "md:ml-0 md:mr-auto" : "md:ml-auto md:mr-0",
+                  )}
+                >
+                  <ProjectCard
+                    project={project}
+                    isExpanded={expandedId === project.id}
+                    onToggle={() => handleCardToggle(project.id)}
+                  />
+                </div>
+
+                {/* Wave connector (only between items) */}
+                {index < visibleProjects.length - 1 && (
+                  <WaveConnector position={index % 2 === 0 ? "right" : "left"} status={project.status} />
+                )}
+              </motion.div>
+            ))}
+          </div>
+        )}
+      </AnimatePresence>
+    </div>
+  </div>
+)
