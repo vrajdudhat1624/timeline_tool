@@ -70,3 +70,26 @@ return (
     </Button>
   ))}
 </div>
+
+import { motion, AnimatePresence } from "framer-motion"
+
+<AnimatePresence>
+  {filters.map((filter) => (
+    <motion.div
+      key={filter.id}
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -10 }}
+      transition={{ duration: 0.2 }}
+    >
+      <Button
+        variant={activeFilter === filter.id ? "default" : "outline"}
+        size="sm"
+        onClick={() => onFilterChange(filter.id)}
+      >
+        <filter.icon className="w-4 h-4 mr-2" />
+        {filter.label}
+      </Button>
+    </motion.div>
+  ))}
+</AnimatePresence>
