@@ -95,3 +95,32 @@ export function TimelineControls({ activeFilter, onFilterChange }: TimelineContr
     </>
   )
 }
+      {/* Mobile dropdown */}
+      <div className="sm:hidden w-full">
+        <DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
+          <DropdownMenuTrigger asChild>
+            <Button variant="outline" className="w-full justify-between">
+              <div className="flex items-center">
+                <Filter className="w-4 h-4 mr-2" />
+                {activeFilterLabel}
+              </div>
+              <ChevronDown className="w-4 h-4 ml-2" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent className="w-full">
+            {filters.map((filter) => (
+              <DropdownMenuItem
+                key={filter.id}
+                onClick={() => {
+                  onFilterChange(filter.id)
+                  setIsOpen(false)
+                }}
+                className={cn("flex items-center", activeFilter === filter.id ? "bg-muted" : "")}
+              >
+                <filter.icon className="w-4 h-4 mr-2" />
+                {filter.label}
+              </DropdownMenuItem>
+            ))}
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </div>
