@@ -89,3 +89,11 @@ export function ProjectTimeline() {
     onToggle={() => setExpandedId(expandedId === project.id ? null : project.id)}
   />
 </motion.div>
+
+<div className="absolute left-0 w-[54px] h-[54px] rounded-full bg-white shadow-md flex items-center justify-center z-10 md:left-1/2 md:transform md:-translate-x-1/2">
+  <Calendar className="w-6 h-6 text-slate-600" />
+</div>
+
+{index < filteredProjects.length - 1 && (
+  <TimelineConnector position={index % 2 === 0 ? "right" : "left"} status={project.status} />
+)}
