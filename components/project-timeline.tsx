@@ -77,3 +77,15 @@ export function ProjectTimeline() {
     </div>
   )
 }
+<motion.div
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.3, delay: index * 0.1 }}
+>
+  <ProjectCard
+    key={project.id}
+    project={project}
+    isExpanded={expandedId === project.id}
+    onToggle={() => setExpandedId(expandedId === project.id ? null : project.id)}
+  />
+</motion.div>
