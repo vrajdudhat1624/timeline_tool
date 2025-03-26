@@ -22,3 +22,9 @@ export function DynamicTimeline() {
   const [visibleProjects, setVisibleProjects] = useState(projectsData)
   const timelineRef = useRef<HTMLDivElement>(null)
 }
+
+// Scroll-based animations
+const { scrollYProgress } = useScroll({
+  target: timelineRef,
+  offset: ["start start", "end end"],
+})
