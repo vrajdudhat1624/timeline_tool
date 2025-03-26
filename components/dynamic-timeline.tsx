@@ -70,3 +70,30 @@ import { TimelineControls } from "@/components/timeline-controls"
   </div>
   <TimelineControls activeFilter={filter} onFilterChange={setFilter} />
 </div>
+
+import { motion, AnimatePresence } from "framer-motion"
+
+<AnimatePresence>
+  {visibleProjects.map((project, index) => (
+    <motion.div
+      key={project.id}
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -50 }}
+      transition={{
+        duration: 0.5,
+        delay: index * 0.1,
+        type: "spring",
+        stiffness: 100,
+      }}
+      layout
+      className="relative"
+    >
+      <ProjectCard
+        project={project}
+        isExpanded={expandedId === project.id}
+        onToggle={() => handleCardToggle(project.id)}
+      />
+    </motion.div>
+  ))}
+</AnimatePresence>
