@@ -136,3 +136,60 @@ function StatusBadge({ status }: { status: string }) {
       return null
   }
 }
+<AnimatePresence>
+  {isExpanded && (
+    <motion.div
+      initial={{ height: 0, opacity: 0 }}
+      animate={{ height: "auto", opacity: 1 }}
+      exit={{ height: 0, opacity: 0 }}
+      transition={{
+        duration: 0.3,
+        type: "spring",
+        stiffness: 500,
+        damping: 30,
+      }}
+      className="overflow-hidden border-t"
+    >
+      <div className="p-5 bg-muted/50">
+        <div className="mb-4">
+          <div className="flex items-center mb-2">
+            <Users className="w-4 h-4 mr-2 text-muted-foreground" />
+            <h4 className="font-medium">Consultants</h4>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {project.consultants.map((consultant, i) => (
+              <Badge key={i} variant="outline" className="bg-background/80">
+                {consultant}
+              </Badge>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <h4 className="font-medium mb-3">Milestones</h4>
+          <div className="space-y-3">
+            {project.milestones.map((milestone, i) => (
+              <motion.div
+                key={i}
+                className="flex items-start"
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: i * 0.1 }}
+              >
+                {milestone.completed ? (
+                  <CheckCircle className="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
+                ) : (
+                  <Clock className="w-5 h-5 text-muted-foreground mr-2 flex-shrink-0 mt-0.5" />
+                )}
+                <div>
+                  <div className="font-medium">{milestone.title}</div>
+                  <div className="text-sm text-muted-foreground">{formatDate(milestone.date)}</div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  )}
+</AnimatePresence>
