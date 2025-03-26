@@ -142,3 +142,24 @@ return (
                 layout
                 className="relative"
               >
+                {/* Timeline date marker */}
+                <motion.div
+                  className="absolute left-0 w-[54px] h-[54px] rounded-full bg-background shadow-md flex items-center justify-center z-10 md:left-1/2 md:transform md:-translate-x-1/2"
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                >
+                  <motion.div
+                    className={cn(
+                      "w-10 h-10 rounded-full flex items-center justify-center",
+                      project.status === "completed"
+                        ? "bg-green-100 dark:bg-green-900/30"
+                        : project.status === "active"
+                          ? "bg-blue-100 dark:bg-blue-900/30"
+                          : project.status === "at-risk"
+                            ? "bg-amber-100 dark:bg-amber-900/30"
+                            : "bg-muted",
+                    )}
+                  >
+                    {getStatusIcon(project.status)}
+                  </motion.div>
+                </motion.div>
