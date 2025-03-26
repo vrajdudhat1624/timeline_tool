@@ -54,3 +54,26 @@ return (
     </div>
   </div>
 )
+export function ProjectTimeline() {
+  const [expandedId, setExpandedId] = useState<number | null>(null)
+  const [filter, setFilter] = useState<string>("all")
+
+  return (
+    <div className="space-y-8">
+      <FilterBar activeFilter={filter} onFilterChange={setFilter} />
+
+      <div className="relative">
+        <div className="absolute left-[26px] top-0 bottom-0 w-[2px] bg-slate-200 md:left-1/2 md:transform md:-translate-x-px" />
+
+        {filteredProjects.map((project) => (
+          <ProjectCard
+            key={project.id}
+            project={project}
+            isExpanded={expandedId === project.id}
+            onToggle={() => setExpandedId(expandedId === project.id ? null : project.id)}
+          />
+        ))}
+      </div>
+    </div>
+  )
+}
