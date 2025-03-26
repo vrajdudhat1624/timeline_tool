@@ -193,3 +193,24 @@ function StatusBadge({ status }: { status: string }) {
     </motion.div>
   )}
 </AnimatePresence>
+<motion.div
+  className="mt-4 pt-4 border-t"
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ delay: 0.3 }}
+>
+  <div className="flex items-center mb-2">
+    <BarChart className="w-4 h-4 mr-2 text-muted-foreground" />
+    <h4 className="font-medium">Project Analytics</h4>
+  </div>
+  <div className="grid grid-cols-2 gap-2 text-center">
+    <div className="bg-background/80 p-3 rounded-lg">
+      <div className="text-2xl font-semibold text-primary">{Math.round(progress)}%</div>
+      <div className="text-xs text-muted-foreground">Completion</div>
+    </div>
+    <div className="bg-background/80 p-3 rounded-lg">
+      <div className="text-2xl font-semibold">{getDaysRemaining(project.endDate)}</div>
+      <div className="text-xs text-muted-foreground">Days Remaining</div>
+    </div>
+  </div>
+</motion.div>
