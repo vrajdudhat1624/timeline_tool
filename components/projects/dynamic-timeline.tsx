@@ -88,3 +88,14 @@ return (
         </Sheet>
       </div>
     </div>
+    <div ref={timelineRef} className="relative min-h-[60vh] pt-4">
+      {/* Timeline center line with scroll progress indicator */}
+      <div className="absolute left-[26px] top-0 bottom-0 w-[2px] bg-muted md:left-1/2 md:transform md:-translate-x-px">
+        <motion.div
+          className="absolute top-0 w-full bg-primary rounded-full"
+          style={{
+            height: scrollYProgress,
+            scaleY: scrollYProgress,
+          }}
+        />
+      </div>
