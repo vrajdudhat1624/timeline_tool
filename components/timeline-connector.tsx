@@ -25,3 +25,15 @@ const getStatusColor = (status: string) => {
 }
 
 const statusColor = getStatusColor(status)
+
+import { cn } from "@/lib/utils"
+
+<div
+  className={cn(
+    "absolute h-12 z-0",
+    position === "left"
+      ? "left-[26px] md:left-1/2 md:transform md:-translate-x-1/2"
+      : "left-[26px] md:left-1/2 md:transform md:-translate-x-1/2",
+  )}
+>
+</div>
