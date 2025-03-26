@@ -117,3 +117,9 @@ import { motion, AnimatePresence } from "framer-motion"
     </Button>
   </motion.div>
 )}
+
+import { WaveConnector } from "@/components/wave-connector"
+
+{index < visibleProjects.length - 1 && (
+  <WaveConnector position={index % 2 === 0 ? "right" : "left"} status={project.status} />
+)}
