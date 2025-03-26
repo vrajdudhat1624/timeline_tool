@@ -13,3 +13,12 @@ import { TimelineControls } from "@/components/projects/timeline-controls"
 import { projectsData } from "@/lib/data"
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
 import { TimelineFilters } from "@/components/projects/timeline-filters"
+
+
+export function DynamicTimeline() {
+  const [expandedId, setExpandedId] = useState<number | null>(null)
+  const [filter, setFilter] = useState<string>("all")
+  const [searchTerm, setSearchTerm] = useState("")
+  const [visibleProjects, setVisibleProjects] = useState(projectsData)
+  const timelineRef = useRef<HTMLDivElement>(null)
+}
