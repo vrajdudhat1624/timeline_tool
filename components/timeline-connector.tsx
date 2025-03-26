@@ -37,3 +37,25 @@ import { cn } from "@/lib/utils"
   )}
 >
 </div>
+
+import { motion } from "framer-motion"
+
+<svg
+  width="54"
+  height="48"
+  viewBox="0 0 54 48"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+  className={cn("absolute top-[54px]", position === "left" ? "-left-[26px]" : "-left-[26px]")}
+>
+  <motion.path
+    initial={{ pathLength: 0 }}
+    animate={{ pathLength: 1 }}
+    transition={{ duration: 1, ease: "easeInOut" }}
+    d="M27 0C27 0 27 24 27 48"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    className={statusColor}
+  />
+</svg>
