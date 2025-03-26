@@ -2,17 +2,15 @@
 
 import { useState, useRef, useEffect } from "react"
 import { motion, AnimatePresence, useScroll } from "framer-motion"
-import { Filter, Search, SlidersHorizontal } from "lucide-react"
+import { Filter, Search } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { ProjectCard } from "@/components/projects/project-card"
-import { WaveConnector } from "@/components/projects/wave-connector"
-import { TimelineControls } from "@/components/projects/timeline-controls"
+import { ProjectCard } from "@/components/project-card"
+import { WaveConnector } from "@/components/wave-connector"
+import { TimelineControls } from "@/components/timeline-controls"
 import { projectsData } from "@/lib/data"
-import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
-import { TimelineFilters } from "@/components/projects/timeline-filters"
 
 export function DynamicTimeline() {
   const [expandedId, setExpandedId] = useState<number | null>(null)
@@ -60,36 +58,20 @@ export function DynamicTimeline() {
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
         <div className="relative w-full sm:w-64 md:w-80">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 w-4 h-4" />
           <Input
             placeholder="Search projects..."
-            className="pl-9"
+            className="pl-9 bg-white"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
         </div>
-        <div className="flex gap-2 w-full sm:w-auto">
-          <TimelineControls activeFilter={filter} onFilterChange={setFilter} />
-          <Sheet>
-            <SheetTrigger asChild>
-              <Button variant="outline" size="icon" className="sm:flex hidden">
-                <SlidersHorizontal className="h-4 w-4" />
-              </Button>
-            </SheetTrigger>
-            <SheetContent>
-              <SheetHeader>
-                <SheetTitle>Filter Projects</SheetTitle>
-                <SheetDescription>Apply advanced filters to your project timeline</SheetDescription>
-              </SheetHeader>
-              <TimelineFilters />
-            </SheetContent>
-          </Sheet>
-        </div>
+        <TimelineControls activeFilter={filter} onFilterChange={setFilter} />
       </div>
 
       <div ref={timelineRef} className="relative min-h-[60vh] pt-4">
         {/* Timeline center line with scroll progress indicator */}
-        <div className="absolute left-[26px] top-0 bottom-0 w-[2px] bg-muted md:left-1/2 md:transform md:-translate-x-px">
+        <div className="absolute left-[26px] top-0 bottom-0 w-[2px] bg-slate-200 md:left-1/2 md:transform md:-translate-x-px">
           <motion.div
             className="absolute top-0 w-full bg-primary rounded-full"
             style={{
@@ -107,11 +89,11 @@ export function DynamicTimeline() {
               exit={{ opacity: 0, y: -20 }}
               className="flex flex-col items-center justify-center py-20 text-center"
             >
-              <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mb-4">
-                <Filter className="w-8 h-8 text-muted-foreground" />
+              <div className="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mb-4">
+                <Filter className="w-8 h-8 text-slate-400" />
               </div>
-              <h3 className="text-xl font-medium mb-2">No projects found</h3>
-              <p className="text-muted-foreground max-w-md">
+              <h3 className="text-xl font-medium text-slate-700 mb-2">No projects found</h3>
+              <p className="text-slate-500 max-w-md">
                 Try adjusting your filters or search terms to find what you're looking for.
               </p>
               <Button
@@ -144,7 +126,7 @@ export function DynamicTimeline() {
                 >
                   {/* Timeline date marker */}
                   <motion.div
-                    className="absolute left-0 w-[54px] h-[54px] rounded-full bg-background shadow-md flex items-center justify-center z-10 md:left-1/2 md:transform md:-translate-x-1/2"
+                    className="absolute left-0 w-[54px] h-[54px] rounded-full bg-white shadow-md flex items-center justify-center z-10 md:left-1/2 md:transform md:-translate-x-1/2"
                     whileHover={{ scale: 1.1 }}
                     transition={{ type: "spring", stiffness: 400, damping: 10 }}
                   >
@@ -152,12 +134,12 @@ export function DynamicTimeline() {
                       className={cn(
                         "w-10 h-10 rounded-full flex items-center justify-center",
                         project.status === "completed"
-                          ? "bg-green-100 dark:bg-green-900/30"
+                          ? "bg-green-50"
                           : project.status === "active"
-                            ? "bg-blue-100 dark:bg-blue-900/30"
+                            ? "bg-blue-50"
                             : project.status === "at-risk"
-                              ? "bg-amber-100 dark:bg-amber-900/30"
-                              : "bg-muted",
+                              ? "bg-amber-50"
+                              : "bg-slate-50",
                       )}
                     >
                       {getStatusIcon(project.status)}
@@ -261,7 +243,7 @@ function getStatusIcon(status: string) {
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
-          className="text-muted-foreground"
+          className="text-slate-400"
         >
           <circle cx="12" cy="12" r="10"></circle>
           <polyline points="12 6 12 12 16 14"></polyline>
