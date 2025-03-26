@@ -52,3 +52,39 @@ useEffect(() => {
   // Animate the transition of filtered projects
   setVisibleProjects(filtered)
 }, [filter, searchTerm])
+
+// Handle card expansion
+const handleCardToggle = (id: number) => {
+  setExpandedId(expandedId === id ? null : id)
+}
+
+return (
+  <div className="space-y-6">
+    <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
+      <div className="relative w-full sm:w-64 md:w-80">
+        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+        <Input
+          placeholder="Search projects..."
+          className="pl-9"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+      </div>
+      <div className="flex gap-2 w-full sm:w-auto">
+        <TimelineControls activeFilter={filter} onFilterChange={setFilter} />
+        <Sheet>
+          <SheetTrigger asChild>
+            <Button variant="outline" size="icon" className="sm:flex hidden">
+              <SlidersHorizontal className="h-4 w-4" />
+            </Button>
+          </SheetTrigger>
+          <SheetContent>
+            <SheetHeader>
+              <SheetTitle>Filter Projects</SheetTitle>
+              <SheetDescription>Apply advanced filters to your project timeline</SheetDescription>
+            </SheetHeader>
+            <TimelineFilters />
+          </SheetContent>
+        </Sheet>
+      </div>
+    </div>
