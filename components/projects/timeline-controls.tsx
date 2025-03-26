@@ -60,3 +60,38 @@ export function TimelineControls({ activeFilter, onFilterChange }: TimelineContr
     </>
   )
 }
+
+      {/* Desktop buttons */}
+      <div className="hidden sm:flex flex-wrap gap-2">
+        <AnimatePresence>
+          {filters.map((filter) => (
+            <motion.div
+              key={filter.id}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.2 }}
+            >
+              <Button
+                variant={activeFilter === filter.id ? "default" : "outline"}
+                size="sm"
+                className={cn("relative", activeFilter === filter.id ? "" : "text-muted-foreground")}
+                onClick={() => onFilterChange(filter.id)}
+              >
+                <filter.icon className="w-4 h-4 mr-2" />
+                {filter.label}
+                {activeFilter === filter.id && (
+                  <motion.div
+                    layoutId="activeFilterIndicator"
+                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary-foreground rounded-full"
+                    transition={{ type: "spring", duration: 0.5 }}
+                  />
+                )}
+              </Button>
+            </motion.div>
+          ))}
+        </AnimatePresence>
+      </div>
+    </>
+  )
+}
