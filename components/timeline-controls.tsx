@@ -93,3 +93,11 @@ import { motion, AnimatePresence } from "framer-motion"
     </motion.div>
   ))}
 </AnimatePresence>
+
+{activeFilter === filter.id && (
+  <motion.div
+    layoutId="activeFilterIndicator"
+    className="absolute bottom-0 left-0 right-0 h-0.5 bg-white rounded-full"
+    transition={{ type: "spring", duration: 0.5 }}
+  />
+)}
