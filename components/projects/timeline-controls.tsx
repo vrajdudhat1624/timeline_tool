@@ -124,3 +124,4 @@ export function TimelineControls({ activeFilter, onFilterChange }: TimelineContr
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
+  const [isOpen, setIsOpen] = useState(false)
